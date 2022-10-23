@@ -19,10 +19,11 @@ public class test {
 //        CustomerService customer = new CustomerServiceImpl();
 //        customer.add();
 //        customer.display();
-        BookingServiceImpl bookingList = new BookingServiceImpl();
-        bookingList.add();
-        bookingList.add();
-        bookingList.add();
-        bookingList.display();
+//        BookingServiceImpl bookingList = new BookingServiceImpl();
+//        bookingList.add();
+//        bookingList.add();
+//        bookingList.add();
+//        bookingList.display();
+        FuramaController.displayMainMenu();
     }
 }

@@ -30,85 +30,64 @@ public class FacilityServiceImpl implements FacilityService {
                 facilityList.putAll(roomList);
             }
         }
-        System.out.printf("|%-10s|%-5s|\n","Dịch vụ cần bão trì","Số lần sử dụng");
+        System.out.printf("|%-10s|%-5s|\n", "Dịch vụ cần bão trì", "Số lần sử dụng");
         Set<Map.Entry<Facility, Integer>> listFacilityMaintenance = facilityList.entrySet();
         for (Map.Entry<Facility, Integer> element : listFacilityMaintenance) {
-            System.out.printf("|%-10s|%-5d|\n", element.getKey().getTenDichVu(),element.getValue());
+            System.out.printf("|%-10s|%-5d|\n", element.getKey().getTenDichVu(), element.getValue());
         }
     }
 
     @Override
     public void display() {
-        int luaChon;
-        do {
-            System.out.println("----Display Menu----");
-            System.out.println("1.\tDisplay Villa List\n" +
-                    "2.\tDisplay House List\n" +
-                    "3.\tDisplay Room List\n" +
-                    "4.\tBack to menu\n");
-            System.out.println("Nhập lựa chọn của bạn:");
-            luaChon = Integer.parseInt(sc.nextLine());
-            switch (luaChon) {
-                case 1:
-                    System.out.println("Danh sách villa cho thuê:");
-                    System.out.println();
-                    for (int i = 0; i < 160; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-20s|%-12s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Tiểu chuẩn phòng", "Diện tích hồ bơi", "Số tầng", "Số lần sử dụng");
-                    for (int i = 0; i < 160; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    Set<Map.Entry<Villa, Integer>> villas = villaList.entrySet();
-                    for (Map.Entry<Villa, Integer> villa : villas) {
-                        System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-20f|%-12d|%-16d|\n", villa.getKey().getTenDichVu(), villa.getKey().getDienTichSuDung(), villa.getKey().getChiPhiThue(), villa.getKey().getSoLuongNguoiToiDa(), villa.getKey().getKieuThue(), villa.getKey().getTieuChuanPhong(), villa.getKey().getDienTichHoBoi(), villa.getKey().getSoTang(), villa.getValue());
-                    }
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println("Danh sách house cho thuê:");
-                    System.out.println();
-                    for (int i = 0; i < 139; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-12s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Tiểu chuẩn phòng", "Số tầng", "Số lần sử dụng");
-                    for (int i = 0; i < 139; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    Set<Map.Entry<House, Integer>> houses = houseList.entrySet();
-                    for (Map.Entry<House, Integer> house : houses) {
-                        System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-12d|%-16d|\n", house.getKey().getTenDichVu(), house.getKey().getDienTichSuDung(), house.getKey().getChiPhiThue(), house.getKey().getSoLuongNguoiToiDa(), house.getKey().getKieuThue(), house.getKey().getTieuChuanPhong(), house.getKey().getSoTang(),house.getValue());
-                    }
-                    System.out.println();
-                    break;
-                case 3:
-                    System.out.println("Danh sách room cho thuê:");
-                    System.out.println();
-                    for (int i = 0; i < 126; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Dịch vụ miễn phí", "Số lần sử dụng");
-                    for (int i = 0; i < 126; i++) {
-                        System.out.print("-");
-                    }
-                    System.out.println();
-                    Set<Map.Entry<Room, Integer>> rooms = roomList.entrySet();
-                    for (Map.Entry<Room, Integer> room : rooms) {
-                        System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-16d|\n", room.getKey().getTenDichVu(), room.getKey().getDienTichSuDung(), room.getKey().getChiPhiThue(), room.getKey().getSoLuongNguoiToiDa(), room.getKey().getKieuThue(),room.getKey().getDichVuMienPhiDiKem(),room.getValue());
-                    }
-                    System.out.println();
-                    break;
-                case 4:
-                    break;
-                default:
-                    System.out.println("Chỉ nhập số từ 1 đến 4");
-            }
-        } while (luaChon < 1 || luaChon > 4);
+
+        System.out.println("Danh sách villa cho thuê:");
+        for (int i = 0; i < 160; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-20s|%-12s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Tiểu chuẩn phòng", "Diện tích hồ bơi", "Số tầng", "Số lần sử dụng");
+        for (int i = 0; i < 160; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        Set<Map.Entry<Villa, Integer>> villas = villaList.entrySet();
+        for (Map.Entry<Villa, Integer> villa : villas) {
+            System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-20f|%-12d|%-16d|\n", villa.getKey().getTenDichVu(), villa.getKey().getDienTichSuDung(), villa.getKey().getChiPhiThue(), villa.getKey().getSoLuongNguoiToiDa(), villa.getKey().getKieuThue(), villa.getKey().getTieuChuanPhong(), villa.getKey().getDienTichHoBoi(), villa.getKey().getSoTang(), villa.getValue());
+        }
+        System.out.println();
+
+
+        System.out.println("Danh sách house cho thuê:");
+        for (int i = 0; i < 139; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-12s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Tiểu chuẩn phòng", "Số tầng", "Số lần sử dụng");
+        for (int i = 0; i < 139; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        Set<Map.Entry<House, Integer>> houses = houseList.entrySet();
+        for (Map.Entry<House, Integer> house : houses) {
+            System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-12d|%-16d|\n", house.getKey().getTenDichVu(), house.getKey().getDienTichSuDung(), house.getKey().getChiPhiThue(), house.getKey().getSoLuongNguoiToiDa(), house.getKey().getKieuThue(), house.getKey().getTieuChuanPhong(), house.getKey().getSoTang(), house.getValue());
+        }
+        System.out.println();
+
+        System.out.println("Danh sách room cho thuê:");
+        for (int i = 0; i < 126; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Dịch vụ miễn phí", "Số lần sử dụng");
+        for (int i = 0; i < 126; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        Set<Map.Entry<Room, Integer>> rooms = roomList.entrySet();
+        for (Map.Entry<Room, Integer> room : rooms) {
+            System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-16d|\n", room.getKey().getTenDichVu(), room.getKey().getDienTichSuDung(), room.getKey().getChiPhiThue(), room.getKey().getSoLuongNguoiToiDa(), room.getKey().getKieuThue(), room.getKey().getDichVuMienPhiDiKem(), room.getValue());
+        }
+        System.out.println();
     }
 
     @Override

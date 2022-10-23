@@ -47,10 +47,7 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return super.toString() +
-                " tieuChuanPhong='" + tieuChuanPhong + '\'' +
-                ", dienTichHoBoi=" + dienTichHoBoi +
-                ", soTang=" + soTang +
-                '}';
+       return "System.out.printf(\"|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-16s|\n\", \"Tên dịch vụ\", \"Diện tích sử dụng\", \"Chi phí thuê\", \"Số người tối đa\", \"Kiểu thuê\", \"Dịch vụ miễn phí\", \"Số lần sử dụng\");";
     }
+
 }
