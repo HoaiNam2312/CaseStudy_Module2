@@ -2,6 +2,8 @@ package controllers;
 
 import services.*;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class FuramaController {
@@ -10,7 +12,7 @@ public class FuramaController {
     public static CustomerServiceImpl customerService = new CustomerServiceImpl();
     public static FacilityServiceImpl facilityService = new FacilityServiceImpl();
     public static BookingService bookingService = new BookingServiceImpl();
-    public static void displayMainMenu() {
+    public static void displayMainMenu() throws ParseException, IOException {
 //        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         int option = 0;
         do {
@@ -22,7 +24,11 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n");
             System.out.println("Nhập lựa chon của bạn: ");
-            option = Integer.parseInt(sc.nextLine());
+            try {
+                option = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             if (option == 1) {
                 displayEmployeeMenu();
             } else if (option == 2) {
@@ -70,7 +76,7 @@ public class FuramaController {
         } while (option!=4);
     }
 
-    public static void displayCustomerMenu() {
+    public static void displayCustomerMenu() throws IOException {
         int option;
         do {
             System.out.println("------Customer Menu------");
@@ -128,7 +134,7 @@ public class FuramaController {
         } while (option != 4);
     }
 
-    public static void displayBookingMenu() {
+    public static void displayBookingMenu() throws ParseException, IOException {
         int option;
         do {
             System.out.println("------Booking Menu------");
@@ -138,14 +144,17 @@ public class FuramaController {
                     "4.\tDisplay list contracts\n" +
                     "5.\tEdit contracts\n" +
                     "6.\tReturn main menu\n");
+            System.out.println("Nhập lựa chon của bạn: ");
             option = Integer.parseInt(sc.nextLine());
             switch (option) {
                 case 1:
-                    employeeService.display();
-                    bookingService.display();
+                    System.out.println("Danh sách khách hàng đã Booking:");
+                    customerService.display();
+                    facilityService.display();
+                    bookingService.add();
                     break;
                 case 2:
-
+                    bookingService.display();
                     break;
                 case 3:
 

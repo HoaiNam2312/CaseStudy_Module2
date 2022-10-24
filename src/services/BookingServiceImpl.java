@@ -3,6 +3,7 @@ package services;
 import models.Booking;
 import models.Contract;
 import models.Customer;
+import models.Villa;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,15 +11,27 @@ import java.util.*;
 
 public class BookingServiceImpl implements BookingService, ConTractService {
     public static Set<Booking> bookingList = new TreeSet<>();
-    public static Set<Contract> contractList = new TreeSet<>();
-    public static Scanner sc = new Scanner(System.in);
-    public static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    private static Set<Contract> contractList = new TreeSet<>();
+    private static Scanner sc = new Scanner(System.in);
+    private static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public void display() {
-        for (Booking booking : bookingList) {
-            System.out.println("Ngày bắt đầu: "+df.format(booking.getNgayBatDau())+"| Ngày kết thúc: "+df.format(booking.getNgayKetThuc()));
+        System.out.println("Danh sách Booking:");
+        for (int i = 0; i <97; i++) {
+            System.out.print("-");
         }
+        System.out.println();
+        System.out.printf("|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|\n", "Mã Booking", "Ngày Bắt Đầu", "Ngày Kết Thúc", "Mã Khách Hàng", "Tên Dịch Vụ", "Loại Dịch Vụ");
+        for (int i = 0; i < 97; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        for (Booking booking : bookingList) {
+            System.out.printf("|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|\n",booking.getMaBooking(),df.format(booking.getNgayBatDau()),df.format(booking.getNgayKetThuc()),booking.getMaKhachHang(),booking.getTenDichVu(),booking.getLoaiDichVu());
+        }
+        System.out.println();
     }
 
     @Override

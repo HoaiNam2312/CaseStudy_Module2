@@ -98,7 +98,11 @@ public class FacilityServiceImpl implements FacilityService {
                     "2.\tAdd New House\n" +
                     "3.\tAdd New Room\n" +
                     "4.\tBack to menu\n");
-            luaChon = Integer.parseInt(sc.nextLine());
+            try {
+                luaChon = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             switch (luaChon) {
                 case 1:
                     System.out.println("---ADD NEW VILLA---");
@@ -131,14 +135,18 @@ public class FacilityServiceImpl implements FacilityService {
         int soLuongNguoiToiDa = Integer.parseInt(sc.nextLine());
         System.out.println("Chọn kiểu cho thuê:");
         String kieuThue = "";
-        int luaChon;
+        int luaChon =0;
         do {
             System.out.println("1.\tThuê theo năm\n" +
                     "2.\tThuê theo tháng\n" +
                     "3.\tThuê theo ngày\n" +
                     "4.\tThuê theo giờ\n");
             System.out.println("Nhập lựa chọn của bạn:");
-            luaChon = Integer.parseInt(sc.nextLine());
+            try {
+                luaChon = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             switch (luaChon) {
                 case 1:
                     kieuThue = "Năm";
@@ -178,14 +186,18 @@ public class FacilityServiceImpl implements FacilityService {
         int soLuongNguoiToiDa = Integer.parseInt(sc.nextLine());
         System.out.println("Chọn kiểu cho thuê:");
         String kieuThue = "";
-        int luaChon;
+        int luaChon=0;
         do {
             System.out.println("1.\tThuê theo năm\n" +
                     "2.\tThuê theo tháng\n" +
                     "3.\tThuê theo ngày\n" +
                     "4.\tThuê theo giờ\n");
             System.out.println("Nhập lựa chọn của bạn:");
-            luaChon = Integer.parseInt(sc.nextLine());
+            try {
+                luaChon = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             switch (luaChon) {
                 case 1:
                     kieuThue = "Năm";
@@ -224,14 +236,18 @@ public class FacilityServiceImpl implements FacilityService {
         int soLuongNguoiToiDa = Integer.parseInt(sc.nextLine());
         System.out.println("Chọn kiểu cho thuê:");
         String kieuThue = "";
-        int luaChon;
+        int luaChon=0;
         do {
             System.out.println("1.\tThuê theo năm\n" +
                     "2.\tThuê theo tháng\n" +
                     "3.\tThuê theo ngày\n" +
                     "4.\tThuê theo giờ\n");
             System.out.println("Nhập lựa chọn của bạn:");
-            luaChon = Integer.parseInt(sc.nextLine());
+            try {
+                luaChon = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             switch (luaChon) {
                 case 1:
                     kieuThue = "Năm";

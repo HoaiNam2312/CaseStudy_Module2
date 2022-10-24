@@ -2,7 +2,9 @@ package services;
 
 import models.Customer;
 import models.Employee;
+import utils.ReadAndWrite;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class CustomerServiceImpl implements CustomerService {
     public static List<Customer> danhSachKhachHang = new LinkedList<>();
     public static Scanner sc = new Scanner(System.in);
     @Override
-    public void edit() {
+    public void edit() throws IOException {
         System.out.println("Nhập mã khách hàng cần kiểm tra:");
         String maKiemTra = sc.nextLine();
         int index = 0;
@@ -39,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
             String email = sc.nextLine();
             System.out.println("Nhập mã khách hàng:");
             String maNhanVien = sc.nextLine();
-            int luaChon;
+            int luaChon=0;
             String loaiKhachHang="";
             do {
                 System.out.println("Chọn loại khách:\n" +
@@ -48,7 +50,12 @@ public class CustomerServiceImpl implements CustomerService {
                         "3.\tGold\n" +
                         "4.\tSilver\n" +
                         "5.\tMember\n");
-                luaChon = Integer.parseInt(sc.nextLine());
+                System.out.println("Vui lòng nhập số tương ứng với mỗi loại khách hàng:");
+                try {
+                    luaChon = Integer.parseInt(sc.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+                }
                 switch (luaChon) {
                     case 1:
                         loaiKhachHang = "Diamond";
@@ -73,7 +80,9 @@ public class CustomerServiceImpl implements CustomerService {
             String diaChi= sc.nextLine();
 
             Customer khachHang = new Customer(hoVaTen, ngaySinh, gioiTinh, soCMND, soDienThoai, email, maNhanVien, loaiKhachHang, diaChi);
+            danhSachKhachHang = (List<Customer>) ReadAndWrite.readFromFile("E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
             danhSachKhachHang.set(index, khachHang);
+            ReadAndWrite.writeToFile(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
         }
     }
 
@@ -88,14 +97,15 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.print("_");
         }
         System.out.println();
-        for (int i = 0; i < danhSachKhachHang.size(); i++) {
-            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16d|%-30s|%-15s|%-20s|%-16s|\n",danhSachKhachHang.get(i).getHoTen(),danhSachKhachHang.get(i).getNgaySinh(),danhSachKhachHang.get(i).getGioiTinh(),danhSachKhachHang.get(i).getSoCMND(),danhSachKhachHang.get(i).getSoDienThoai(),danhSachKhachHang.get(i).getEmail(),danhSachKhachHang.get(i).getMaKhachHang(),danhSachKhachHang.get(i).getLoaiKhachHang(),danhSachKhachHang.get(i).getDiaChi());
-            System.out.println();
+        danhSachKhachHang = (List<Customer>) ReadAndWrite.readFromFile("ReadAndWrite.writeToFile(danhSachKhachHang,\"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
+        for (Customer customer : danhSachKhachHang) {
+            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16d|%-30s|%-15s|%-20s|%-16s|\n",customer.getHoTen(),customer.getNgaySinh(),customer.getGioiTinh(),customer.getSoCMND(),customer.getSoDienThoai(),customer.getEmail(),customer.getMaKhachHang(),customer.getLoaiKhachHang(),customer.getDiaChi());
         }
+
     }
 
     @Override
-    public void add() {
+    public void add() throws IOException {
         System.out.println("Nhập họ và tên:");
         String hoVaTen = sc.nextLine();
         System.out.println("Nhập ngày sinh:");
@@ -112,16 +122,21 @@ public class CustomerServiceImpl implements CustomerService {
         String email = sc.nextLine();
         System.out.println("Nhập mã khách hàng:");
         String maNhanVien = sc.nextLine();
-        int luaChon;
+        int luaChon=0;
         String loaiKhachHang="";
         do {
-            System.out.println("Chọn loại khách:\n" +
+            System.out.println("Chọn loại khách hàng:\n" +
                     "1.\tDiamond\n" +
                     "2.\tPlatinium\n" +
                     "3.\tGold\n" +
                     "4.\tSilver\n" +
                     "5.\tMember\n");
-            luaChon = Integer.parseInt(sc.nextLine());
+            System.out.println("Vui lòng nhập số tương ứng với mỗi loại khách hàng:");
+            try {
+                luaChon = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại!");
+            }
             switch (luaChon) {
                 case 1:
                     loaiKhachHang = "Diamond";
@@ -147,5 +162,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer khachHang = new Customer(hoVaTen,ngaySinh,gioiTinh,soCMND,soDienThoai,email,maNhanVien,loaiKhachHang,diaChi);
         danhSachKhachHang.add(khachHang);
+        ReadAndWrite.writeToFile(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
     }
 }

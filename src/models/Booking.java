@@ -1,8 +1,6 @@
 package models;
 
-import java.util.Comparator;
 import java.util.Date;
-import java.util.Objects;
 
 public class Booking implements Comparable<Booking> {
     private String maBooking;
@@ -12,7 +10,7 @@ public class Booking implements Comparable<Booking> {
     private String tenDichVu;
     private String loaiDichVu;
 
-    public Booking() {
+    public Booking(String maBooking, String s, String s1, String maKhachHang, String tenDichVu, String loaiDichVu) {
     }
 
     public Booking(String maBooking, Date ngayBatDau, Date ngayKetThuc, String maKhachHang, String tenDichVu, String loaiDichVu) {
