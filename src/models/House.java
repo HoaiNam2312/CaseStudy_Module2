@@ -1,6 +1,8 @@
 package models;
 
-public class House extends Facility {
+import java.io.Serializable;
+
+public class House extends Facility implements Serializable {
     private String tieuChuanPhong;
     private int soTang;
 
@@ -36,9 +38,6 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return super.toString() +
-                " tieuChuanPhong='" + tieuChuanPhong + '\'' +
-                ", soTang=" + soTang +
-                '}';
+        return this.getTenDichVu() + "," + this.getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + tieuChuanPhong + "," + soTang + ",";
     }
 }

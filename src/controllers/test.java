@@ -2,6 +2,7 @@ package controllers;
 
 import models.Booking;
 import models.Customer;
+import models.Facility;
 import services.BookingServiceImpl;
 import services.CustomerService;
 import services.CustomerServiceImpl;
@@ -28,8 +29,6 @@ public class test {
 //        bookingList.add();
 //        bookingList.add();
 //        bookingList.display();
-        List<Booking> bookingList = new ArrayList<>();
-        bookingList.add(new Booking("1","23/12/2001","29/12/2000","1","1","1"));
-        ReadAndWrite.writeToFile(bookingList,"test.csv");
+        FuramaController.displayMainMenu();
     }
 }

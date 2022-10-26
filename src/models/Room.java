@@ -1,6 +1,8 @@
 package models;
 
-public class Room extends Facility {
+import java.io.Serializable;
+
+public class Room extends Facility implements Serializable {
     private String dichVuMienPhiDiKem;
 
     public Room() {
@@ -25,8 +27,6 @@ public class Room extends Facility {
 
     @Override
     public String toString() {
-        return super.toString()+
-                " dichVuMienPhiDiKem='" + dichVuMienPhiDiKem + '\'' +
-                '}';
+        return getTenDichVu() + "," + getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + dichVuMienPhiDiKem + ",";
     }
 }

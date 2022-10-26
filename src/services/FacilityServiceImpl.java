@@ -4,6 +4,7 @@ import models.Facility;
 import models.House;
 import models.Room;
 import models.Villa;
+import utils.ReadAndWrite;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,7 +17,9 @@ public class FacilityServiceImpl implements FacilityService {
     static Map<Room, Integer> roomList = new LinkedHashMap<>();
     static Map<Facility, Integer> facilityList = new LinkedHashMap<>();
     static Scanner sc = new Scanner(System.in);
-
+    private static int countVilla =0;
+    private static int countHouse =0;
+    private static int countRoom =0;
     @Override
     public void displayListFacilityMaintenance() {
         if (villaList.size() >= 5 || houseList.size() >= 5 || roomList.size() >= 5) {
@@ -50,6 +53,7 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.print("-");
         }
         System.out.println();
+        villaList = ReadAndWrite.readFileVilla("E:\\CODEGYM\\FuramaResort\\src\\data\\villa.csv");
         Set<Map.Entry<Villa, Integer>> villas = villaList.entrySet();
         for (Map.Entry<Villa, Integer> villa : villas) {
             System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-20f|%-12d|%-16d|\n", villa.getKey().getTenDichVu(), villa.getKey().getDienTichSuDung(), villa.getKey().getChiPhiThue(), villa.getKey().getSoLuongNguoiToiDa(), villa.getKey().getKieuThue(), villa.getKey().getTieuChuanPhong(), villa.getKey().getDienTichHoBoi(), villa.getKey().getSoTang(), villa.getValue());
@@ -62,6 +66,7 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.print("-");
         }
         System.out.println();
+        houseList = ReadAndWrite.readFileHouse("E:\\CODEGYM\\FuramaResort\\src\\data\\house.csv");
         System.out.printf("|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-12s|%-16s|\n", "Tên dịch vụ", "Diện tích sử dụng", "Chi phí thuê", "Số người tối đa", "Kiểu thuê", "Tiểu chuẩn phòng", "Số tầng", "Số lần sử dụng");
         for (int i = 0; i < 139; i++) {
             System.out.print("-");
@@ -83,6 +88,7 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.print("-");
         }
         System.out.println();
+        roomList = ReadAndWrite.readFileRoom("E:\\CODEGYM\\FuramaResort\\src\\data\\room.csv");
         Set<Map.Entry<Room, Integer>> rooms = roomList.entrySet();
         for (Map.Entry<Room, Integer> room : rooms) {
             System.out.printf("|%-15s|%-20f|%-16d|%-18d|%-13s|%-20s|%-16d|\n", room.getKey().getTenDichVu(), room.getKey().getDienTichSuDung(), room.getKey().getChiPhiThue(), room.getKey().getSoLuongNguoiToiDa(), room.getKey().getKieuThue(), room.getKey().getDichVuMienPhiDiKem(), room.getValue());
@@ -125,6 +131,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public void addNewHouse() {
+        countHouse++;
         System.out.println("Nhập tên dịch vụ:");
         String tenDichVu = sc.nextLine();
         System.out.println("Nhập diện tích sử dụng:");
@@ -172,7 +179,7 @@ public class FacilityServiceImpl implements FacilityService {
         House newHouse = new House(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue, tieuChuanPhong, soTang);
 
         houseList.put(newHouse, houseList.size() + 1);
-
+        ReadAndWrite.writeFileHouse(houseList,"E:\\CODEGYM\\FuramaResort\\src\\data\\house.csv");
     }
 
     public void addNewRoom() {
@@ -221,11 +228,12 @@ public class FacilityServiceImpl implements FacilityService {
         Room newRoom = new Room(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue, dichVuMienPhiDiKem);
 
         roomList.put(newRoom, roomList.size() + 1);
-
+        ReadAndWrite.writeFileRoom(roomList,"E:\\CODEGYM\\FuramaResort\\src\\data\\room.csv");
 
     }
 
     public void addNewVilla() {
+        countVilla++;
         System.out.println("Nhập tên dịch vụ:");
         String tenDichVu = sc.nextLine();
         System.out.println("Nhập diện tích sử dụng:");
@@ -273,9 +281,8 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Nhập số tầng:");
         int soTang = Integer.parseInt(sc.nextLine());
         Villa newVilla = new Villa(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue, tieuChuanPhong, dienTichHoBoi, soTang);
-
-
-        villaList.put(newVilla, villaList.size() + 1);
-
+//        villaList = ReadAndWrite.readFileVilla("E:\\CODEGYM\\FuramaResort\\src\\data\\villa.csv");
+        villaList.put(newVilla, countVilla);
+        ReadAndWrite.writeFileVilla(villaList,"E:\\CODEGYM\\FuramaResort\\src\\data\\villa.csv");
     }
 }

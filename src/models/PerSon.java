@@ -5,14 +5,14 @@ public abstract class PerSon {
     private String ngaySinh;
     private String gioiTinh;
     private int soCMND;
-    private int soDienThoai;
+    private String soDienThoai;
     private String email;
 
     public PerSon() {
 
     }
 
-    public PerSon(String hoTen, String ngaySinh, String gioiTinh, int soCMND, int soDienThoai, String email) {
+    public PerSon(String hoTen, String ngaySinh, String gioiTinh, int soCMND, String soDienThoai, String email) {
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -53,11 +53,11 @@ public abstract class PerSon {
         this.soCMND = soCMND;
     }
 
-    public int getSoDienThoai() {
+    public String getSoDienThoai() {
         return soDienThoai;
     }
 
-    public void setSoDienThoai(int soDienThoai) {
+    public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
 

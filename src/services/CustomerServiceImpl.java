@@ -2,6 +2,7 @@ package services;
 
 import models.Customer;
 import models.Employee;
+import models.PerSon;
 import utils.ReadAndWrite;
 
 import java.io.IOException;
@@ -33,10 +34,8 @@ public class CustomerServiceImpl implements CustomerService {
             String gioiTinh = sc.nextLine();
             System.out.println("Nhập số CMND:");
             int soCMND = Integer.parseInt(sc.nextLine());
-            sc.nextLine();
             System.out.println("Nhập số điện thoại:");
-            int soDienThoai = Integer.parseInt(sc.nextLine());
-            sc.nextLine();
+            String  soDienThoai = sc.nextLine();
             System.out.println("Nhập email khách hàng:");
             String email = sc.nextLine();
             System.out.println("Nhập mã khách hàng:");
@@ -80,9 +79,9 @@ public class CustomerServiceImpl implements CustomerService {
             String diaChi= sc.nextLine();
 
             Customer khachHang = new Customer(hoVaTen, ngaySinh, gioiTinh, soCMND, soDienThoai, email, maNhanVien, loaiKhachHang, diaChi);
-            danhSachKhachHang = (List<Customer>) ReadAndWrite.readFromFile("E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
+            danhSachKhachHang = ReadAndWrite.readFileCustomer("E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
             danhSachKhachHang.set(index, khachHang);
-            ReadAndWrite.writeToFile(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
+            ReadAndWrite.writeFileCustomer(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
         }
     }
 
@@ -97,11 +96,10 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.print("_");
         }
         System.out.println();
-        danhSachKhachHang = (List<Customer>) ReadAndWrite.readFromFile("ReadAndWrite.writeToFile(danhSachKhachHang,\"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
+        danhSachKhachHang = ReadAndWrite.readFileCustomer("E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
         for (Customer customer : danhSachKhachHang) {
-            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16d|%-30s|%-15s|%-20s|%-16s|\n",customer.getHoTen(),customer.getNgaySinh(),customer.getGioiTinh(),customer.getSoCMND(),customer.getSoDienThoai(),customer.getEmail(),customer.getMaKhachHang(),customer.getLoaiKhachHang(),customer.getDiaChi());
+            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16s|%-30s|%-15s|%-20s|%-16s|\n",customer.getHoTen(),customer.getNgaySinh(),customer.getGioiTinh(),customer.getSoCMND(),customer.getSoDienThoai(),customer.getEmail(),customer.getMaKhachHang(),customer.getLoaiKhachHang(),customer.getDiaChi());
         }
-
     }
 
     @Override
@@ -114,10 +112,8 @@ public class CustomerServiceImpl implements CustomerService {
         String gioiTinh = sc.nextLine();
         System.out.println("Nhập số CMND:");
         int soCMND = Integer.parseInt(sc.nextLine());
-        sc.nextLine();
         System.out.println("Nhập số điện thoại:");
-        int soDienThoai = Integer.parseInt(sc.nextLine());
-        sc.nextLine();
+        String  soDienThoai = sc.nextLine();
         System.out.println("Nhập email khách hàng:");
         String email = sc.nextLine();
         System.out.println("Nhập mã khách hàng:");
@@ -162,6 +158,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer khachHang = new Customer(hoVaTen,ngaySinh,gioiTinh,soCMND,soDienThoai,email,maNhanVien,loaiKhachHang,diaChi);
         danhSachKhachHang.add(khachHang);
-        ReadAndWrite.writeToFile(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
+        ReadAndWrite.writeFileCustomer(danhSachKhachHang,"E:\\CODEGYM\\FuramaResort\\src\\data\\customer.csv");
     }
 }

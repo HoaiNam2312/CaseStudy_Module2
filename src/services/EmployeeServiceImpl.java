@@ -1,6 +1,7 @@
 package services;
 
 import models.Employee;
+import utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,10 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             String gioiTinh = sc.nextLine();
             System.out.println("Nhập số CMND:");
             int soCMND = Integer.parseInt(sc.nextLine());
-            sc.nextLine();
             System.out.println("Nhập số điện thoại:");
-            int soDienThoai = Integer.parseInt(sc.nextLine());
-            sc.nextLine();
+            String  soDienThoai = sc.nextLine();
             System.out.println("Nhập email cá nhân:");
             String email = sc.nextLine();
             System.out.println("Nhập mã nhân viên:");
@@ -112,7 +111,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.println("Nhập lương:");
             int luong = sc.nextInt();
             Employee nhanVien = new Employee(hoVaTen, ngaySinh, gioiTinh, soCMND, soDienThoai, email, maNhanVien, trinhDo, viTri, luong);
+            danhSachNhanVien = ReadAndWrite.readFileEmployee("E:\\CODEGYM\\FuramaResort\\src\\data\\employee.csv");
             danhSachNhanVien.set(index, nhanVien);
+            ReadAndWrite.writeFileEmployee(danhSachNhanVien,"E:\\CODEGYM\\FuramaResort\\src\\data\\employee.csv");
         } else {
             System.out.println("Tên nhân viên không có trong danh sách!");
         }
@@ -129,8 +130,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.print("_");
         }
         System.out.println();
+        danhSachNhanVien = ReadAndWrite.readFileEmployee("E:\\CODEGYM\\FuramaResort\\src\\data\\employee.csv");
         for (int i = 0; i < danhSachNhanVien.size(); i++) {
-            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16d|%-30s|%-15s|%-12s|%-16s|%-10d|\n", danhSachNhanVien.get(i).getHoTen(), danhSachNhanVien.get(i).getNgaySinh(), danhSachNhanVien.get(i).getGioiTinh(), danhSachNhanVien.get(i).getSoCMND(), danhSachNhanVien.get(i).getSoDienThoai(), danhSachNhanVien.get(i).getEmail(), danhSachNhanVien.get(i).getMaNhanVien(), danhSachNhanVien.get(i).getTrinhDo(), danhSachNhanVien.get(i).getViTri(), danhSachNhanVien.get(i).getLuong());
+            System.out.printf("|%-16s|%-16s|%-15s|%-16d|%-16s|%-30s|%-15s|%-12s|%-16s|%-10d|\n", danhSachNhanVien.get(i).getHoTen(), danhSachNhanVien.get(i).getNgaySinh(), danhSachNhanVien.get(i).getGioiTinh(), danhSachNhanVien.get(i).getSoCMND(), danhSachNhanVien.get(i).getSoDienThoai(), danhSachNhanVien.get(i).getEmail(), danhSachNhanVien.get(i).getMaNhanVien(), danhSachNhanVien.get(i).getTrinhDo(), danhSachNhanVien.get(i).getViTri(), danhSachNhanVien.get(i).getLuong());
             System.out.println();
         }
     }
@@ -145,10 +147,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         String gioiTinh = sc.nextLine();
         System.out.println("Nhập số CMND:");
         int soCMND = Integer.parseInt(sc.nextLine());
-        sc.nextLine();
         System.out.println("Nhập số điện thoại:");
-        int soDienThoai = Integer.parseInt(sc.nextLine());
-        sc.nextLine();
+        String  soDienThoai = sc.nextLine();
         System.out.println("Nhập email cá nhân:");
         String email = sc.nextLine();
         System.out.println("Nhập mã nhân viên:");
@@ -229,6 +229,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         int luong = sc.nextInt();
         Employee nhanVien = new Employee(hoVaTen, ngaySinh, gioiTinh, soCMND, soDienThoai, email, maNhanVien, trinhDo, viTri, luong);
         danhSachNhanVien.add(nhanVien);
+        ReadAndWrite.writeFileEmployee(danhSachNhanVien,"E:\\CODEGYM\\FuramaResort\\src\\data\\employee.csv");
     }
 }
 

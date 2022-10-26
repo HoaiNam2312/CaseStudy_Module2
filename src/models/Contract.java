@@ -1,6 +1,8 @@
 package models;
 
-public class Contract {
+import java.io.Serializable;
+
+public class Contract implements Serializable {
     private int soHopDong;
     private String maBooking;
     private int soTienCocTruoc;

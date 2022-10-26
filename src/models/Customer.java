@@ -1,9 +1,13 @@
 package models;
 
-public class Customer extends PerSon {
+import java.io.Serializable;
+
+public class Customer extends PerSon implements Serializable {
+    private final static long serialVersionUID=1;
     private String maKhachHang;
     private String loaiKhachHang;
     private String diaChi;
+
 
     public Customer() {
     }
@@ -14,7 +18,7 @@ public class Customer extends PerSon {
         this.diaChi = diaChi;
     }
 
-    public Customer(String hoTen, String ngaySinh, String gioiTinh, int soCMND, int soDienThoai, String email, String maKhachHang, String loaiKhachHang, String diaChi) {
+    public Customer(String hoTen, String ngaySinh, String gioiTinh, int soCMND, String soDienThoai, String email, String maKhachHang, String loaiKhachHang, String diaChi) {
         super(hoTen, ngaySinh, gioiTinh, soCMND, soDienThoai, email);
         this.maKhachHang = maKhachHang;
         this.loaiKhachHang = loaiKhachHang;
@@ -45,4 +49,8 @@ public class Customer extends PerSon {
         this.loaiKhachHang = loaiKhachHang;
     }
 
+    @Override
+    public String toString() {
+        return this.getHoTen()+","+this.getNgaySinh()+","+this.getGioiTinh()+","+this.getSoCMND()+","+this.getSoDienThoai()+","+this.getEmail()+","+this.getMaKhachHang()+","+this.getLoaiKhachHang()+","+this.getDiaChi();
+    }
 }

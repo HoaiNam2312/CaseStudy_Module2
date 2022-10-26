@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Booking implements Comparable<Booking> {
+public class Booking implements Comparable<Booking>, Serializable {
     private String maBooking;
     private Date ngayBatDau;
     private Date ngayKetThuc;

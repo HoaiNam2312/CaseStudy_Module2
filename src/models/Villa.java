@@ -1,6 +1,8 @@
 package models;
 
-public class Villa extends Facility {
+import java.io.Serializable;
+
+public class Villa extends Facility implements Serializable {
     private String tieuChuanPhong;
     private double dienTichHoBoi;
     private int soTang;
@@ -47,7 +49,7 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-       return "System.out.printf(\"|%-15s|%-20s|%-16s|%-18s|%-13s|%-20s|%-16s|\n\", \"Tên dịch vụ\", \"Diện tích sử dụng\", \"Chi phí thuê\", \"Số người tối đa\", \"Kiểu thuê\", \"Dịch vụ miễn phí\", \"Số lần sử dụng\");";
+       return this.getTenDichVu()+","+this.getDienTichSuDung()+","+this.getChiPhiThue()+","+this.getSoLuongNguoiToiDa()+","+this.getKieuThue()+","+tieuChuanPhong+","+dienTichHoBoi+","+soTang+",";
     }
 
 }
