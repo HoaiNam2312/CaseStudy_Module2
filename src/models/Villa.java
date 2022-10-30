@@ -13,8 +13,8 @@ public class Villa extends Facility implements Serializable {
         this.soTang = soTang;
     }
 
-    public Villa(String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, double dienTichHoBoi, int soTang) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
+    public Villa(String id,String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, double dienTichHoBoi, int soTang) {
+        super(id,tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.dienTichHoBoi = dienTichHoBoi;
         this.soTang = soTang;
@@ -49,7 +49,7 @@ public class Villa extends Facility implements Serializable {
 
     @Override
     public String toString() {
-       return this.getTenDichVu()+","+this.getDienTichSuDung()+","+this.getChiPhiThue()+","+this.getSoLuongNguoiToiDa()+","+this.getKieuThue()+","+tieuChuanPhong+","+dienTichHoBoi+","+soTang+",";
+       return this.getId()+","+this.getTenDichVu()+","+this.getDienTichSuDung()+","+this.getChiPhiThue()+","+this.getSoLuongNguoiToiDa()+","+this.getKieuThue()+","+tieuChuanPhong+","+dienTichHoBoi+","+soTang+",";
     }
 
 }

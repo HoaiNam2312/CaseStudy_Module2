@@ -14,8 +14,8 @@ public class House extends Facility implements Serializable {
         this.soTang = soTang;
     }
 
-    public House(String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, int soTang) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
+    public House(String id,String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, int soTang) {
+        super(id,tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.soTang = soTang;
     }
@@ -38,6 +38,6 @@ public class House extends Facility implements Serializable {
 
     @Override
     public String toString() {
-        return this.getTenDichVu() + "," + this.getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + tieuChuanPhong + "," + soTang + ",";
+        return this.getId() + "," + this.getTenDichVu() + "," + this.getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + tieuChuanPhong + "," + soTang + ",";
     }
 }

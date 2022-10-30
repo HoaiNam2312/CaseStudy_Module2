@@ -4,6 +4,7 @@ import models.Customer;
 import models.Employee;
 import models.PerSon;
 import utils.ReadAndWrite;
+import utils.RegexData;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class CustomerServiceImpl implements CustomerService {
     public static List<Customer> danhSachKhachHang = new LinkedList<>();
     public static Scanner sc = new Scanner(System.in);
+    private static final String REGEX_AGE = "^\\d{2}/\\d{2}/\\d{4}$";
     @Override
     public void edit() throws IOException {
         System.out.println("Nhập mã khách hàng cần kiểm tra:");
@@ -107,7 +109,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("Nhập họ và tên:");
         String hoVaTen = sc.nextLine();
         System.out.println("Nhập ngày sinh:");
-        String ngaySinh = sc.nextLine();
+        String ngaySinh = RegexData.regexAge(sc.nextLine(), REGEX_AGE);
         System.out.println("Nhập gới tính:");
         String gioiTinh = sc.nextLine();
         System.out.println("Nhập số CMND:");

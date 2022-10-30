@@ -2,6 +2,7 @@ package models;
 
 public abstract class Facility {
     private String tenDichVu;
+    private String id;
     private double dienTichSuDung;
     private int chiPhiThue;
     private int soLuongNguoiToiDa;
@@ -10,7 +11,16 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Facility(String id, String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue) {
+        this.id = id;
         this.tenDichVu = tenDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;

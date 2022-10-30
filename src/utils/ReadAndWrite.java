@@ -140,8 +140,8 @@ public class ReadAndWrite {
                     continue;
                 }
                 String lineArr[] = line.split(",");
-                Villa newVilla = new Villa(lineArr[0],Double.parseDouble(lineArr[1]),Integer.parseInt(lineArr[2]),Integer.parseInt(lineArr[3]),lineArr[4],lineArr[5],Double.parseDouble(lineArr[6]),Integer.parseInt(lineArr[7]));
-                villaList.put(newVilla,Integer.parseInt(lineArr[8]));
+                Villa newVilla = new Villa(lineArr[0],lineArr[1],Double.parseDouble(lineArr[2]),Integer.parseInt(lineArr[3]),Integer.parseInt(lineArr[4]),lineArr[5],lineArr[6],Double.parseDouble(lineArr[7]),Integer.parseInt(lineArr[8]));
+                villaList.put(newVilla,Integer.parseInt(lineArr[9]));
             }
             return villaList;
         } catch (IOException e) {
@@ -172,8 +172,8 @@ public class ReadAndWrite {
                     continue;
                 }
                 String lineArr[] = line.split(",");
-                House newHouse = new House(lineArr[0],Double.parseDouble(lineArr[1]),Integer.parseInt(lineArr[2]),Integer.parseInt(lineArr[3]),lineArr[4],lineArr[5],Integer.parseInt(lineArr[6]));
-                houseList.put(newHouse,Integer.parseInt(lineArr[7]));
+                House newHouse = new House(lineArr[0],lineArr[1],Double.parseDouble(lineArr[2]),Integer.parseInt(lineArr[3]),Integer.parseInt(lineArr[4]),lineArr[5],lineArr[6],Integer.parseInt(lineArr[7]));
+                houseList.put(newHouse,Integer.parseInt(lineArr[8]));
             }
             return houseList;
         } catch (IOException e) {
@@ -205,8 +205,8 @@ public class ReadAndWrite {
                 }
                 String lineArr[] = line.split(",");
 
-                Room newRoom = new Room(lineArr[0],Double.parseDouble(lineArr[1]),Integer.parseInt(lineArr[2]),Integer.parseInt(lineArr[3]),lineArr[4],lineArr[5]);
-                roomList.put(newRoom,Integer.parseInt(lineArr[6]));
+                Room newRoom = new Room(lineArr[0],lineArr[1],Double.parseDouble(lineArr[2]),Integer.parseInt(lineArr[3]),Integer.parseInt(lineArr[4]),lineArr[5],lineArr[6]);
+                roomList.put(newRoom,Integer.parseInt(lineArr[7]));
             }
             return roomList;
         } catch (IOException e) {

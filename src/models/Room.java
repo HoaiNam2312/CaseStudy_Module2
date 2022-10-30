@@ -12,8 +12,8 @@ public class Room extends Facility implements Serializable {
         this.dichVuMienPhiDiKem = dichVuMienPhiDiKem;
     }
 
-    public Room(String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String dichVuMienPhiDiKem) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
+    public Room(String id,String tenDichVu, double dienTichSuDung, int chiPhiThue, int soLuongNguoiToiDa, String kieuThue, String dichVuMienPhiDiKem) {
+        super(id,tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
         this.dichVuMienPhiDiKem = dichVuMienPhiDiKem;
     }
 
@@ -27,6 +27,6 @@ public class Room extends Facility implements Serializable {
 
     @Override
     public String toString() {
-        return getTenDichVu() + "," + getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + dichVuMienPhiDiKem + ",";
+        return getId() + "," + getTenDichVu() + "," + getDienTichSuDung() + "," + getChiPhiThue() + "," + getSoLuongNguoiToiDa() + "," + getKieuThue() + "," + dichVuMienPhiDiKem + ",";
     }
 }

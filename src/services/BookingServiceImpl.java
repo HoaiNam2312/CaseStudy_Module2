@@ -4,6 +4,7 @@ import models.Booking;
 import models.Contract;
 import models.Customer;
 import models.Villa;
+import utils.RegexData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ public class BookingServiceImpl implements BookingService, ConTractService {
     private static Set<Contract> contractList = new TreeSet<>();
     private static Scanner sc = new Scanner(System.in);
     private static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
+    private static final String REGEX_DATE = "^\\d{2}/\\d{2}/\\d{4}$";
     @Override
     public void display() {
         System.out.println("Danh sách Booking:");
@@ -39,9 +40,9 @@ public class BookingServiceImpl implements BookingService, ConTractService {
         System.out.println("Nhập mã Booking:");
         String maBooking = sc.nextLine();
         System.out.println("Nhập ngày bắt đầu thuê:");
-        Date ngayBatDau = df.parse(sc.nextLine());
+        Date ngayBatDau = df.parse(RegexData.regexStr(sc.nextLine(),REGEX_DATE,"Định dạng nhập vào không đúng!!!\\nĐịnh dạng đúng cho ngày ngày bắt đầu phải là: dd/MM/yyyy\nVui lòng nhập lại:"));
         System.out.println("Nhập ngày kết thúc thuê:");
-        Date ngayKetThuc = df.parse(sc.nextLine());
+        Date ngayKetThuc = df.parse(RegexData.regexStr(sc.nextLine(),REGEX_DATE,"Định dạng nhập vào không đúng!!!\\nĐịnh dạng đúng cho ngày ngày kết thúc phải là: dd/MM/yyyy\nVui lòng nhập lại:"));
         System.out.println("Nhập mã khách hàng:");
         String maKhachHang = sc.nextLine();
         System.out.println("Nhập tên dịch vụ:");
