@@ -3,10 +3,12 @@ package utils;
 import models.*;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ReadAndWrite {
-
+    private static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 //    public static void writeToFile(Collection collection, String fileAddress) throws IOException {
 //        File file = new File(fileAddress);
 //        if (!file.exists()) {
@@ -214,4 +216,34 @@ public class ReadAndWrite {
         }
         return null;
     }
+    public static void writeFileBooking(TreeSet<Booking> bookingList, String fileAddress) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileAddress))) {
+            for (Booking booking : bookingList) {
+                bufferedWriter.write(booking.toString());
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static TreeSet<Booking> readFileBooking(String fileAddress) {
+        TreeSet<Booking> bookingList = new TreeSet<>();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(fileAddress))) {
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.trim().equals("")) {
+                    continue;
+                }
+                String[] lineArr = line.split(",");
+                bookingList.add(new Booking(lineArr[0],df.parse(lineArr[1]),df.parse(lineArr[2]),lineArr[3],lineArr[4],lineArr[5]));
+            }
+            return bookingList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
 }

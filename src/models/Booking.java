@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Booking implements Comparable<Booking>, Serializable {
@@ -10,6 +11,7 @@ public class Booking implements Comparable<Booking>, Serializable {
     private String maKhachHang;
     private String tenDichVu;
     private String loaiDichVu;
+    private static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     public Booking(String maBooking, String s, String s1, String maKhachHang, String tenDichVu, String loaiDichVu) {
     }
@@ -81,9 +83,6 @@ public class Booking implements Comparable<Booking>, Serializable {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                " ngayBatDau=" + ngayBatDau +
-                ", ngayKetThuc=" + ngayKetThuc +
-                '}';
+        return getMaBooking()+","+df.format(getNgayBatDau())+","+df.format(getNgayKetThuc())+","+getMaKhachHang()+","+getTenDichVu()+","+getLoaiDichVu();
     }
 }
