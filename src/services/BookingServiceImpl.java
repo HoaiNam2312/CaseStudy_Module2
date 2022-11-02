@@ -14,7 +14,7 @@ import java.util.*;
 
 public class BookingServiceImpl implements BookingService, ConTractService {
     public static TreeSet<Booking> bookingList = new TreeSet<>();
-    private static TreeSet<Contract> contractList = new TreeSet<>();
+    private static Queue<Contract> contractList = new ArrayDeque<>();
     private static Scanner sc = new Scanner(System.in);
     private static SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     private static final String REGEX_DATE = "^\\d{2}/\\d{2}/\\d{4}$";

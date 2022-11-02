@@ -152,6 +152,27 @@ public class ReadAndWrite {
         return null;
     }
 
+    public static int readCountBooking(String fileAddress,String service) {
+        int count =0;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileAddress))) {
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.trim().equals("")) {
+                    continue;
+                }
+                String[] lineArr = line.split(",");
+                for (String element : lineArr) {
+                    if (element.equals(service)) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public static void writeFileHouse(Map<House, Integer> houseList, String fileAddress) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileAddress))) {
             Set<Map.Entry<House, Integer>> houses = houseList.entrySet();

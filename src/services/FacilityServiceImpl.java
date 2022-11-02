@@ -285,7 +285,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public void addNewVilla() {
-        countVilla++;
+
         String id = inputID("villa");
         String tenDichVu = inputName();
 
@@ -333,7 +333,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         int soTang = Integer.parseInt(inputFloor());
         Villa newVilla = new Villa(id,tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue, tieuChuanPhong, dienTichHoBoi, soTang);
-//        villaList = ReadAndWrite.readFileVilla("E:\\CODEGYM\\FuramaResort\\src\\data\\villa.csv");
+        countVilla = ReadAndWrite.readCountBooking("E:\\CODEGYM\\FuramaResort\\src\\data\\booking.csv","Villa");
         villaList.put(newVilla, countVilla);
         ReadAndWrite.writeFileVilla(villaList,"E:\\CODEGYM\\FuramaResort\\src\\data\\villa.csv");
     }
